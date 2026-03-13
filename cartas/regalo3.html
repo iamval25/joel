@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuestra historia</title>
+
+<!-- FUENTES NUEVAS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg, #faf7f2, #efeae3);
+  display:flex;
+  justify-content:center;
+  font-family:'Libre Baskerville', serif; /* historia */
+  color:#2b2b2b;
+  overflow-y:auto;   /* 🔹 AHORA SÍ SE PUEDE BAJAR */
+}
+
+/* Fondo GIF */
+.background{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:url("/img/Ao\ Haru\ Ride.gif") center/cover no-repeat;
+  opacity:0.25;
+  z-index:-2;
+}
+
+.container{
+  max-width:750px;
+  margin:60px 20px;
+  background:rgba(255, 255, 255, 0.17);
+  padding:55px 65px;
+  border-radius:35px;
+  box-shadow:0 15px 45px rgba(0,0,0,0.15);
+}
+
+h1{
+  font-family:'Great Vibes', cursive; /* título */
+  font-size:2.6rem;
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.story{
+  font-family:'Libre Baskerville', serif;
+  font-style:italic;
+  font-size:1.15rem;
+  line-height:2;
+  white-space:pre-line;
+}
+
+.footer{
+  margin-top:35px;
+  text-align:center;
+  font-size:1.1rem;
+}
+
+button{
+  display:block;
+  margin:40px auto 0;
+  padding:12px 35px;
+  font-size:1rem;
+  border:none;
+  border-radius:25px;
+  background:#2b2b2b;
+  color:white;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#444;
+}
+
+audio{
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+<h1> Nuestra historia </h1>
+
+<div class="story">
+Había una vez dos personas
+que se conocieron por una llamada cualquiera,
+de esas que no prometen nada
+pero terminan marcando algo.
+
+Al principio solo me pareciste chistoso,
+agradable, diferente.
+Alguien con quien sí daba ganas de hablar,
+de reír,
+de no aburrirse.
+
+Y así, sin darnos cuenta,
+empezamos a hablar más
+y terminamos siendo mejores amigos.
+
+No todo fue perfecto.
+Hubo momentos difíciles,
+momentos donde dolió,
+donde dejamos de hablar
+y cada quien siguió por su lado por un tiempo.
+
+Después, la vida volvió a cruzarnos.
+Intentamos algo,
+no se pudo,
+y otra vez hubo silencio.
+
+Pero aquí estamos otra vez.
+
+Hoy no te escribo esto desde una relación,
+ni desde promesas grandes.
+Te lo escribo desde el cariño,
+desde el respeto
+y desde el amor que te tengo
+por quien eres.
+
+No sé qué vaya a pasar mañana,
+pero sí sé algo
+me alegra que existas.
+Me alegra que sigas aquí.
+Y me alegra que formes parte de mi historia.
+
+Gracias por llegar hasta este último regalo, Joel.
+Feliz cumpleaños.
+Esto lo hice con mucho amor.
+</div>
+
+<div class="footer">— Valecita 🤍</div>
+
+<button onclick="window.history.back()">Volver</button>
+</div>
+
+<audio src="/musica/Someone To Spend Time With - Los Retros [Letra sub español].mp3" autoplay loop></audio>
+
+</body>
+</html>
+
+</html>
+
+

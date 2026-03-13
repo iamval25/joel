@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños, Joel</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <style>
+
+  
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      color: #000;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #fdfdfd;
+      padding: 20px;
+      position: relative;
+    }
+
+     
+
+    /* Pelota de básquet rodando */
+    .basketball {
+      position: absolute;
+      top: 20%;
+      left: -100px;
+      width: 80px;
+      animation: roll 6s linear ;
+    }
+
+    @keyframes roll {
+      0% { left: -100px; transform: rotate(0deg); }
+      100% { left: 110%; transform: rotate(1080deg); } /* 3 vueltas completas */
+    }
+
+    /* GIF de fondo */
+    .gif-background {
+      position:center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .gif-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3; /* puedes ajustar la transparencia */
+    }
+
+        .background-layer img {
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Marco blanco alrededor del contenido */
+    .content-frame {
+      background-color: rgb(255, 255, 255); /* blanco semi-transparente */
+      padding: 40px;
+      border-radius: 25px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Collage detrás del marco */
+    .background-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.25;
+    }
+
+    .background-layer img {
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: boing 1s ease forwards;
+    }
+
+    @keyframes boing {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+
+    p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .gifts {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 2.2s;
+    }
+
+    .gifts a img {
+      width: 80px;
+      height: 80px;
+      transition: transform 0.3s;
+    }
+
+    .gifts a img:hover {
+      transform: scale(1.2) rotate(-5deg);
+    }
+  </style>
+</head>
+<body>
+
+     <!-- Pelota de básquet animada -->
+  <img src="./img/balon.png" alt="Balón de básquet" class="basketball">
+
+
+  <!-- GIF de fondo -->
+  <div class="gif-background">
+    <img src="/img/descargar.gif.gif" alt="GIF de fondo">
+  </div>
+
+
+  <!-- Contenido dentro del marco -->
+  <div class="content-frame">
+    <h1>Feliz Cumpleaños Joel</h1>
+    <p>Espero que te guste, te lo hice con mucho amor</p>
+
+    <div class="gifts">
+  <a href="./cartas/regalo1.html"><img src="/img/regalosimangen.jpg" alt="Regalo 1"></a>
+  <a href="./cartas/regalo2.html"><img src="/img/regalosimangen.jpg" alt="Regalo 2"></a>
+  <a href="./cartas/regalo3.html"><img src="/img/regalosimangen.jpg" alt="Regalo 3"></a>
+</div>
+</div>
+</body>
+</html>
+
+
+
+

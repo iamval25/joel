@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Laberinto de Attack on Titan</title>
+<style>
+body{
+  margin:0;
+  background:#f0f0f0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  font-family:'Playfair Display', serif;
+  text-align:center;
+}
+
+h1{
+  margin-bottom:20px;
+  color:#222;
+}
+
+#maze{
+  display:grid;
+  grid-template-columns: repeat(20, 40px);
+  grid-template-rows: repeat(12, 40px);
+  gap:2px;
+  margin-bottom:20px;
+  position: relative;
+}
+
+.cell{
+  width:40px;
+  height:40px;
+  border-radius:4px;
+  background:#fff;
+}
+
+.player{
+  background-image: url("/img/attack\ on\ titan.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.goal{
+  background-image: url("/img/《Shingeki\ No\ Kyojin》Mikasa\ Ackerman.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.wall{
+  background:#111; /* opcional */
+}
+
+/* Modal premio */
+#prizeModal{
+  display:none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background:rgba(255,255,255,0.95);
+  padding:30px 50px;
+  border-radius:25px;
+  text-align:center;
+  z-index:10;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+#prizeModal img{
+  width:300px;
+  height:250px;
+  margin-bottom:15px;
+}
+
+#prizeModal button{
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#222;
+  color:#fff;
+  cursor:pointer;
+}
+#prizeModal button:hover{ background:#555; }
+
+button.back{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#222;
+  color:#fff;
+  cursor:pointer;
+}
+button.back:hover{ background:#555; }
+
+</style>
+</head>
+<body>
+
+<h1>Laberinto de Attack on Titan</h1>
+
+<div id="maze"></div>
+
+<!-- Modal del premio -->
+<div id="prizeModal">
+  <img src="/img/sapa.gif" alt="Premio">
+  <h2> Felicidades Joel! </h2>
+  <p>¡Has completado el laberinto y aquí está tu premio!</p>
+  <button onclick="closePrize()">Cerrar</button>
+</div>
+
+<!-- Audio del premio -->
+<audio id="prizeSound" src="/musica/mix_2m53s (audio-joiner.com).mp3"></audio>
+
+<button class="back" onclick="window.history.back()">Volver</button>
+
+<script>
+// 0 = camino libre | 1 = pared (opcional) | 2 = jugador | 3 = meta
+const mazeLayout=[
+[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+[1,2,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+[1,0,1,1,0,1,0,1,1,0,1,0,1,1,1,1,1,1,0,1],
+[1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1],
+[1,0,1,0,1,1,1,1,0,1,1,0,1,0,1,1,0,1,0,1],
+[1,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+[1,1,1,0,1,0,1,1,0,1,0,1,1,0,1,1,1,1,0,1],
+[1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1],
+[1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,3,1],
+[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+];
+
+const maze=document.getElementById("maze");
+const prizeModal=document.getElementById("prizeModal");
+const prizeSound=document.getElementById("prizeSound");
+let playerIndex=0;
+const cols=20;
+
+// Crear laberinto
+mazeLayout.flat().forEach((cell,i)=>{
+  const div=document.createElement("div");
+  div.classList.add("cell");
+  if(cell===1) div.classList.add("wall"); // opcional
+  if(cell===2){ div.classList.add("player"); playerIndex=i; }
+  if(cell===3) div.classList.add("goal");
+  maze.appendChild(div);
+});
+
+// Movimiento jugador
+function move(dir){
+  let next=playerIndex;
+  if(dir==="up") next-=cols;
+  if(dir==="down") next+=cols;
+  if(dir==="left") next-=1;
+  if(dir==="right") next+=1;
+
+  const target=maze.children[next];
+  if(!target||target.classList.contains("wall")) return;
+
+  maze.children[playerIndex].classList.remove("player");
+  maze.children[playerIndex].classList.add("cell");
+
+  if(target.classList.contains("goal")){
+    target.classList.add("player");
+    // Mostrar premio
+    prizeModal.style.display="block";
+    prizeSound.play(); // 🎵 Reproducir sonido
+    return;
+  }
+
+  target.classList.add("player");
+  playerIndex=next;
+}
+
+// Cerrar modal
+function closePrize(){
+  prizeModal.style.display="none";
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowUp") move("up");
+  if(e.key==="ArrowDown") move("down");
+  if(e.key==="ArrowLeft") move("left");
+  if(e.key==="ArrowRight") move("right");
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
