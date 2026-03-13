@@ -118,14 +118,14 @@ body {
 
 /* Personaje */
 .player {
-  background: url("./img/attack\ on\ titan.jpg") center/cover no-repeat;
+  background: url("img/attack\ on\ titan.jpg") center/cover no-repeat;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
 
 /* Meta */
 .goal {
-  background: url("./img/《Shingeki\ No\ Kyojin》Mikasa\ Ackerman.jpg") center/cover no-repeat;
+  background: url("img/mikasa.jpg") center/cover no-repeat;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0,0,0,0.6);
 }
